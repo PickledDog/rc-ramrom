@@ -1170,7 +1170,7 @@ Text GLabel 3000 6400 2    50   Input ~ 0
 ~ROM_CS
 Wire Wire Line
 	3000 6400 2800 6400
-Text GLabel 9100 1650 2    50   Input ~ 0
+Text GLabel 9100 1650 2    50   Output ~ 0
 RAM_A16
 Wire Wire Line
 	9600 1850 9600 1550

@@ -5,9 +5,9 @@
     {
       "Vendor":      "KiCad",
       "Application": "Pcbnew",
-      "Version":     "(5.1.6)-1"
+      "Version":     "(5.1.9)-1"
     },
-    "CreationDate":  "2021-01-05T00:51:17-08:00"
+    "CreationDate":  "2021-01-24T02:40:07-08:00"
   },
   "GeneralSpecs":
   {
@@ -32,7 +32,7 @@
       "PadToPad":  0.200,
       "PadToTrack":  0.200,
       "TrackToTrack":  0.200,
-      "MinLineWidth":  0.250,
+      "MinLineWidth":  0.254,
       "TrackToRegion":  0.305,
       "RegionToRegion":  0.305
     }

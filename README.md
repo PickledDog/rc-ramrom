@@ -1,5 +1,6 @@
 # rc-ramrom
  Pageable RAM/ROM card for RC2014
+![Assembled PD106](/img/assembled.jpg)
 
 ## Overview
 This RC2014-compatible board provides both ROM and RAM in a single card. ROM comes from an EPROM or EEPROM, with 8k/16k/32k granularity, and RAM is provided by a 128k x 8 SRAM. The ROM can be paged out and replaced by RAM.
@@ -8,15 +9,15 @@ This RC2014-compatible board provides both ROM and RAM in a single card. ROM com
 For ROM, multiple EPROM and EEPROM chips are supported (8K through 64K from the 27Cxx and 28Cxx series - see below for supported chips). Room is provided for a ZIF socket for the EPROM, if desired. For RAM, an AS6C1008 SRAM is used, providing 128K of addressable memory. The upper 64K is difficult to use (page size is the entire 64K Z80 address space), but is there for the adventurous coder; consider this 64K of RAM for most purposes.
 
 ## Paging
-The ROM is enabled by default, appearing at the bottom of memory (the RAM filling the rest of the address space). A config register allows it to be disabled (paged out) and replaced with RAM - this is required by systems like CP/M. A second config register selects between lower and upper 64K RAM banks. These registers are presented as two I/O devices to the system: ROM paging at 0x38, and RAM selection at 0x30. Writing a **1** to 0x38 disables the ROM, and writing a **1** to 0x38 switches to the upper RAM bank. Both of these actions are indicated by LEDs.
+The ROM is enabled by default, appearing at the bottom of memory (the RAM filling the rest of the address space). A config register allows it to be disabled (paged out) and replaced with RAM - this is required by systems like CP/M. A second config register selects between lower and upper 64K RAM banks. These registers are presented as two I/O devices to the system: ROM paging at 0x38, and RAM selection at 0x30. Writing a **1** to 0x38 disables the ROM, and writing a **1** to 0x30 switches to the upper RAM bank. Both of these actions are indicated by LEDs.
 
-The ports are chosen to have the same organization as the [SC114 Motherboard](https://smallcomputercentral.wordpress.com/sc114-documentation/), and the ROM control address is common to most Z80 retrocomputers (the official RC2014 RAM/ROM cards included). As such, this board is basically the SC114's memory subsystem, in card form. 
+The ports are chosen to have the same organization as the [SC114 Motherboard](https://smallcomputercentral.wordpress.com/sc114-documentation/), and the ROM control address is common to most Z80 retrocomputers (the official RC2014 RAM/ROM cards included). As such, this board is basically the SC114's memory subsystem, in card form, with the addition of selectable page size and address.
 
 ## Chip support
 The board supports 27C64, 27C128, 27C256, and 27C512 EPROMs, as well as 28C64 and 28C256 EEPROMs. Other chips with similar pinouts will *probably* work, but are untested. 150ns parts (like most 28C256s) are running at the edge of their specification in a standard 7.3Mhz system, and may require lowering the CPU clock. The [27C256](https://www.mouser.com/ProductDetail/AT27C256R-70PU/), [27C512](https://www.mouser.com/ProductDetail/AT27C512R-70PU/), and [28C256](https://www.mouser.com/ProductDetail/AT28C256-15PU/) can be purchased new.
 
 ## Firmware
-Most (if not all) [RC2014 ROM images](https://github.com/RC2014Z80/RC2014/tree/master/ROMs) can be used unmodified (selecting the right images for your serial board, of course). Stephen C Cousins' excellent [Small Computer Monitor](https://smallcomputercentral.wordpress.com/small-computer-monitor/) can be used as well - all of the R* configurations are supported. You will need an EPROM programmer (for example, a [TL866](https://www.ebay.com/sch/i.html?_nkw=tl866ii+plus)) to load the ROM images onto a chip.
+Most (if not all) [RC2014 ROM images](https://github.com/RC2014Z80/RC2014/tree/master/ROMs) can be used unmodified (selecting the right images for your serial board, of course). Stephen C Cousins' excellent [Small Computer Monitor](https://smallcomputercentral.wordpress.com/small-computer-monitor/) can be used as well - all of the R\* configurations are supported. You will need an EPROM programmer (for example, a [TL866](https://www.ebay.com/sch/i.html?_nkw=tl866ii+plus)) to load the ROM images onto a chip.
 
 ## Jumper settings
 Refer to the front and back of the board for detailed jumper setting instructions.
